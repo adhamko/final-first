@@ -1,0 +1,76 @@
+Welcome to Assessing Models Visually. In this video, you’ll learn how to assess
+models visually using a variety of methods to determine if they meet model assumptions. It is usually helpful to complement the numeric
+analysis of metrics with visualizations that will help you understand the predictions and
+check whether there might be problems with your model. Also, you need to check the assumptions of
+a linear model, as previously stated, by checking for linearity, independence, normality, and
+equal variance. We will talk about the numeric metrics later
+in the course. In this part, you will learn about the visualization
+component. There are several ways to check the linearity
+of the relationships between the predictor and the outcome. In this lesson, you’ll learn about two ways:
+regression plots and residual plots. Regression plots are a good estimate of the
+relationship between two variables, the strength of the correlation, and the direction of the
+relationship (positive or negative). Here we show a regression plot as a combination
+of the scatter plot, where each point represents a different y, the target value ArrDelayMinutes,
+and the fitted linear regression line y_hat, which represents the predicted value. As you can see, the scatter plot shows a linear
+relationship where, as DepDelayMinutes increase, ArrDelayMinutes also increase. There are several ways to plot a regression
+plot. One a simple way is to use the ggplot() function from the ggplot2 library. First, load the ggplot2 library. Then, call the ggplot() function. The parameter x is the name of the column
+that contains the dependent variable or feature, which is "DepDelayMinutes". The parameter y contains the name of the column
+that contains the name of the dependent variable or target, which is "ArrDelayMinutes". The parameter data is the name of the dataframe. This example uses the "aa_delays" subset created
+in the previous section, which only contains flight data about Alaska Airlines without
+the missing values. The function geom_point() creates a scatter
+plot that represents the data points of departure and arrival delays. The function stat_smooth() plots the red line
+and grey confidence interval bands of the fitted linear regression model. The model to fit can be specified but by default
+is y over x. The result is this plot. This looks linear
+but let’s see what our other diagnostic plots say. When you run the plot() of a model, the output
+is four different diagnostic plots. You can visually inspect these plots to get
+a sense of how you did on several of the assumptions outlined above. The first plot, residuals versus fitted, is
+useful for checking the assumption of linearity and homoscedasticity. Looking at this plot, you can see a few problems. R automatically flagged three data points
+that have large residuals (observations 82, 107, and 53). Besides that, the residuals do not appear
+to be linear because the red line plotted through the residuals is not straight. It also looks like the data is not homoscedastic,
+given that they do not appear evenly spread around the y = 0 line. Let's talk about several cases of a residual
+plot and what they indicate. First, this is a good residual plot. You
+expect to see that the results have zero mean and are distributed evenly around the x-axis
+with similar variance and no curvature. This type of residual plot indicates that
+the assumption of linearity and homoscedasticity is met. In this residual plot, there is curvature
+and the values of the error change with the x-axis. For example, in this area, all the residual
+errors are positive. In this area, the residuals are negative. In the final area, the error is large. The residuals are not randomly separated;
+this suggests the linear assumption is incorrect. This plot suggests a non-linear function,
+which we will handle in the next section. In this plot, you can see that the variance
+of the residuals increases with x, therefore our model violates an assumption. The normality assumption is evaluated
+based on the residuals and can be evaluated using a quantile-quantile plot (or Q-Q plot)
+by comparing the residuals to “ideal” normal observations along the 45-degree line. R automatically identifies three data points
+that have large residuals (observations 55, 107, and 62). The plot shows some deviation from the straight-line
+pattern indicating a distribution with heavier tails than a normal distribution. So, what useful information can you read from
+a Q-Q plot? Let’s look at three general situations and
+explain their implications. Here is how an optimal normal Q-Q plot appears,
+and it suggests that the error terms are normally distributed. This is an example where the Q-Q plot is heavy-tailed. There are too many extreme positive and negative
+residuals, so the error terms are not normally distributed. And the relationship between the sample percentiles
+and theoretical percentiles is not linear. So, the condition that the error terms are
+normally distributed is not met. This is an example where the Q-Q plot is skewed. From this plot, you can tell the distribution
+of the residuals must be quite skewed, as well, so the error terms are not normally
+distributed. This means that the condition that the error
+terms are normally distributed has not been met. The scale-location plot, which shows the square
+rooted standardized residual vs. the predicted value, is useful for checking the assumption
+of homoscedasticity. This example plot determines if there is a
+pattern in the residuals. If the red line you see on your plot is flat
+and horizontal with equally and random spread data points (like the night sky), you’re
+good. If your red line has a positive slope to it,
+or if your data points are not randomly spread out, you’ve violated this assumption. In this case, R again flagged observations
+62, 107, and 55. Besides that, there is not a horizontal line
+with randomly scattered data points around it, so the  homoscedasticity assumption
+is not satisfied. This plot helps you find influential cases
+if any are present in the data. Not all outliers are influential in linear
+regression analysis. Even though data have extreme values, they
+might not be influential to determine a regression line. That means, the results wouldn’t be much
+different if you either include or exclude them from analysis. The red dashed curved lines on the plot represents
+Cook’s distance. If you don’t have influential cases, the
+dashed red curve will be minor, with none of the data points crossing them, or the line
+will not present at all. For example, points with high leverage and
+high absolute residual like the red dots would be considered influential. However, looking at this plot, none of the
+points cross the dotted lines, but some points come close. Observations 62, 55, and 91 come close to
+being “influential”. You could still try to remove these observations,
+re-run this analysis, and determine how much the model improved. In this video, you learned that you could
+use visuals to check model assumptions, including linearity, independence, normality, and equal
+variance (or homoscedasticity). You also learned some methods for visually
+assessing models including regression plots, diagnostic plots, residual plots, quantile-quantile
+plots, scale-location plots, and residuals vs leverage plots.

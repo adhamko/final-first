@@ -1,0 +1,53 @@
+Welcome to HTTP Request and REST API. After watching this video, you will be able
+to explain how the HTTP protocol works, explain the role of the REST application programming
+interface (or API) in transporting data across the web, and perform HTTP requests and process
+HTTP responses using the httr package. HTTP is probably the most used communication
+protocol for fetching web resources for clients from servers on the Internet. A resource can include a web page, media files,
+including images and video clips, or even a csv file containing a dataset. Let’s look at the basic workflow of HTTP. For example, assume that you want to open
+the home page of IBM cloud in a browser on your mobile phone. This web page contains content and some media
+files. The browser uses the HTTP protocol to get
+all required resources and render them accordingly. First, the browser creates several requests. The requests can be distributed to a web server,
+which serves static or dynamic web pages, or a media file server, which serves images
+and videos. The servers respond to the requests by building
+HTTP responses and sending them back to the browser. After receiving and extracting the resources
+in the responses, the browser consumes the resources and renders the home page for you. The essential components of HTTP are the HTTP
+request and the HTTP response. Both the HTTP request and response are comprised
+of human-readable text called hypertext. Let’s look at some core components of a
+request. The HTTP method describes the operation to
+be performed on the resource on the server side. Some common methods are the GET method, which
+requests a resource, the POST method, which sends data to the server for creating or updating
+a resource, the PUT method, which updates a resource, and the DELETE method, which deletes
+a resource. The URL, which stands for Universal Resource
+Locator, uniquely identifies a resource on the Internet. The request header contains some extra metadata
+about the request, such as the accepting language or the data format. Optionally, a request may also include a body,
+which contains the data to be sent to the server. The HTTP response includes a status code that
+indicates the result of the request. Some common status codes are 200, which means
+the request was successful, 404, which means that the requested resource was not found,
+and 403, which means the current request is forbidden. The response header includes some extra metadata
+sent by the server about the response and the response body includes resource content,
+such as an HTML page or an image (in raw bytes.) HTTP is a low-level communication protocol. To help with the design and simplification
+of high-level distributed applications, such as web applications, Representational State
+Transfer (or REST) was invented. The REST API is a web service that uses the
+REST architecture to handle a request on a frontend web service. REST is the most popular web API design standard
+so most web APIs that you see today follow REST rules. REST has the following features: REST is resource-centric, meaning that the
+client should know the resource to be fetched but not how it will be fetched on the server
+side. As such, the server and client should be loosely
+coupled. REST is stateless, which means the server
+should not store any information about the connection context. Each request is independent. REST mostly uses JSON or XML to exchange data. By using JSON and XML, different applications
+on different platforms can communicate with each other without barriers. And REST is a high-level standard. As such, it mostly uses HTTP as the low-level
+data transportation implementation. In most cases, making an HTTP-based REST call
+is like making an HTTP request. To work with HTTP requests or REST APIs in
+R, you can use a popular R package called httr. httr includes functions for the most common
+HTTP methods, like GET, POST, DELETE, and PUT. Once you have a basic understanding of HTTP,
+httr is easy to use. To make a basic GET request, simply call the
+GET() function with a URL. The GET() function returns an HTTP response
+wrapped in a response object. It includes a status code, headers, and a
+response body. To make a POST request, you must first prepare
+the data to be posted. In this example, the body is a simple list
+with a course name and an instructor name. Then, use the POST() function with the URL
+and the body argument. The POST() function returns an HTTP response
+wrapped in a response object that includes a status code, headers, and a response body. In this video, you learned that HTTP is a
+communication protocol for fetching web resources for clients from servers on the Internet and
+that each instance is comprised of a request and response. You also learned that the REST API is a web
+service that uses the REST architecture to handle a request on a frontend web service. You also learned that you could perform common
+HTTP and REST operations using the httr package in R.

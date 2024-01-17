@@ -1,0 +1,76 @@
+Welcome to Web Scraping  in R. After watching this video, you will be
+able to identify the components of an HTML page and then perform
+common web scraping tasks, like reading, downloading, and extracting data
+from a web page, using the rvest package in R. HTML stands for Hypertext Markup Language
+and it is used mainly for writing web pages. An HTML page consists of many organized HTML nodes or elements that tell a
+browser how to render its content. Each node or element has a start tag
+and an end tag with the same name and wraps some textual content. Here is a simple HTML example. The html  node is the root node,
+defining this markup file as an HTML page. The head node contains metadata
+about this page, such as its title. The body node defines the main body of the page. The body contains all content
+in the page, including headings, paragraphs, images, videos,
+audio, links, tables, lists, and more. The p node defines a paragraph to
+hold some text starting from a new line. A node may also contain attributes. For example, the root html node has an attribute called “lang” that
+declares the language for this page. After an HTML file loads into a browser, the browser renders its content
+based on the HTML nodes. For example, the text in the title node
+appears on the browser title bar. Text in the h1 node, which stands for
+heading 1, renders with a large, bold font. And text in a p node renders as
+a new paragraph in the page body. One key feature of HTML is that nodes
+can be nested within other nodes, organizing into a tree-like structure
+like the folders in a file system. For example, this html node is the root node,
+which has two child nodes, head and body. Since the head and body
+nodes have the same parent html node they are siblings to each other. Similarly, the body node has two
+child nodes, the h1 and p nodes. It is important to understand
+this tree-structure when writing a new HTML page or extracting
+data from an existing HTML page. Now, let’s see how to parse an HTML page
+and extract some useful data from it. One simple way is open an HTML page in a browser and manually copy and paste the
+data into a csv or text file. However, this manual process would
+be very time-consuming if you have hundreds of thousands of pages to process. Instead, you can use web scraping, which
+is an automatic process of collecting and extracting data from web pages. Take this example, as an analyst, you may need
+to make some stock trading decisions. You would need to collect different kinds
+of information from various web pages, such as those containing the company’s
+financial reports or historical stock prices. So, you can write a web scraping program to
+perform the data collection task for you. However, web scraping can be challenging, mainly
+because HTML pages are designed for humans, not for machines. HTML pages typically have extra
+style, layout, and script files to make web pages pretty and interactive for human users, but those
+add-ons bring extra efforts for web scraping. Luckily, there are many web scraping packages
+available for programmers to help with this task. The rvest package is a popular
+web scraping package for R. After rvest reads an HTML page, you can use the tag names to find
+the child nodes of the current node. Let’s look at an example that uses rvest. Suppose you have a simple HTML page stored
+in a character variable called simple_html. Then, to return the root node
+(in this case, the html node), load the simple_html variable into
+the rvest function called read_html(). If you print the contents
+of root_node, you will see all its child nodes, including
+the body node and a p node. More often, you want to read a
+public HTML page using its URL. For example, to get the home page
+of IBM with the URL www.ibm.com, you can pass the URL to the read_html() function
+and return the root html node for the web page. If you print the root node, you
+can see all its child nodes, including the head and body nodes. In some scenarios, you may need to download many
+HTML pages and then scrape them in offline mode. To do this, use the download.file()
+function to download a page by its URL and save it as a local
+HTML file with a .html extension. Then, use the read_html() function to read
+the local file, in this example ibm.html. This is like reading HTML from a
+character variable or from a URL. Next, let’s see how to
+extract specific node content. The following example extracts the text
+content of a p node from an HTML file. First, you use the read_html() function to read
+the HTML text and return its root html node. Then, find its body node by
+using the html_node() function, with root_node as one input and the
+body tag name as the second input. Next, since the p node is
+a child of the body node, you can still use html_node()
+to return the p node. Finally, use the html_text()
+function on the p node to return its text content
+as “This is an html page”. To summarize this process, start
+with the root html node, find its child node body, and
+then, starting from the body node, find its child p node, and then use
+html_text() to get its text content. In an HTML page, a table node
+works like a data frame. With rvest, you can easily extract an HTML table
+and convert it to an R data frame. Suppose you have a sample color table on the
+left showing the supported HTML colors, and you want to load it as a R data frame so you can
+analyze it using data frame-related operations. To do this, use the html_node() function
+to find its child table node, and then call the html_table() function to read this
+table node as a data frame automatically. If you print the data frame, you can see that
+all textual and numeric data is now stored in it. In this video, you learned that web scraping
+HTML pages is a common data analysis task that is made easier using the
+functions of the rvest package. You can use rvest to perform common tasks, such
+as reading HTML from a character variable; reading HTML from a URL: downloading a web page
+and reading it offline; extracting node data from a web page; and converting a table
+from a web page to a data frame.

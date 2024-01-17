@@ -1,0 +1,6 @@
+SELECT TOP (1000) [Employee_ID]
+      ,[First_Namme]
+      ,[Last_Name]
+      ,[AGe]
+      ,[GENDER]
+  FROM [Adham_SQL_Tuotrial].[dbo].[DEMOGraphics]
